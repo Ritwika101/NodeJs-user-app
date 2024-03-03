@@ -1,9 +1,10 @@
-const express = require("express");
+import express from 'express';
+import UserHandler from "./user/handler/user.js";
+import mongoose from "mongoose";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+
 const app = express();
-const userRoutes = require("./user/handler/user");
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
 
 mongoose.connect(
   ""
@@ -13,6 +14,6 @@ app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/user", userRoutes);
+UserHandler.init(app);
 
-module.exports = app;
+export default app;
