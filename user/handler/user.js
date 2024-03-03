@@ -39,7 +39,8 @@ class UserHandler {
             });
         }
     }
-    init(app) {
+
+    async init(app) {
         app.post('/user/create', this.checkUser, this.createUser);
     }
 }
